@@ -1,0 +1,30 @@
+<h1><%= @user.name %>'s Profile</h1>
+<p>Email: <%= @user.email %></p>
+
+<h2>Posts</h2>
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h3><%= link_to post.title, post %></h3>
+        <p><%= post.content %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No posts found.</p>
+<% end %>
+
+<h2>Comments</h2>
+<% if @comments.any? %>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li>
+        <p><%= comment.body %></p>
+        <p><strong>Post:</strong> <%= link_to comment.post.title, comment.post %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments found.</p>
+<% end %>
